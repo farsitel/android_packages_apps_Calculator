@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.text.format.Jalali;
 
 import org.javia.arity.Symbols;
 import org.javia.arity.SyntaxException;
@@ -74,10 +75,12 @@ class Logic {
     }
 
     void insert(String delta) {
+        delta = Jalali.persianDigitsIfPersian(delta);
         mDisplay.insert(delta);
     }
 
     private void setText(CharSequence text) {
+        text = Jalali.persianDigitsIfPersian(text.toString());
         mDisplay.setText(text, CalculatorDisplay.Scroll.UP);
     }
 
@@ -171,6 +174,7 @@ class Logic {
         if (input.trim().equals("")) {
             return "";
         }
+        input = Jalali.replacePersianDigits(input);
 
         // drop final infix operators (they can only result in error)
         int size = input.length();
