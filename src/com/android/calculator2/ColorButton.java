@@ -25,7 +25,6 @@ import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.view.MotionEvent;
-import android.text.FriBidi;
 import android.content.res.Resources;
 
 /**
@@ -36,7 +35,6 @@ class ColorButton extends Button implements OnClickListener {
     static final int CLICK_FEEDBACK_INTERVAL = 10;
     static final int CLICK_FEEDBACK_DURATION = 350;
     
-    protected FriBidi mFriBidi;
     float mTextX;
     float mTextY;
     long mAnimStart;
@@ -77,9 +75,7 @@ class ColorButton extends Button implements OnClickListener {
 
     private void measureText() {
         Paint paint = getPaint();
-        if ((mFriBidi == null) || (mFriBidi.str == null))
-            mFriBidi = new FriBidi(getText());
-        mTextX = (getWidth() - paint.measureText(mFriBidi.str)) / 2;
+        mTextX = (getWidth() - paint.measureText(getText().toString())) / 2;
         mTextY = (getHeight() - paint.ascent() - paint.descent()) / 2;
     }
 
@@ -111,7 +107,7 @@ class ColorButton extends Button implements OnClickListener {
             drawMagicFlame(0, canvas);
         }
         
-        CharSequence text = mFriBidi.reorderOnce();
+        CharSequence text = getText();
         canvas.drawText(text, 0, text.length(), mTextX, mTextY, getPaint());
     }
 
