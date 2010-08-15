@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Application name -->
-    <string name="app_name">ماشین‌حساب</string>
+    <string name="app_name">ماشین حساب</string>
     <!-- If there is a syntax error in the user entered calculation, an error dialog will appear.  This is the title. -->
     <string name="error">خطا</string>
     <!-- Displayed numbers for the digit buttons -->
