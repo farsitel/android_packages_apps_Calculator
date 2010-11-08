@@ -75,12 +75,12 @@ class Logic {
     }
 
     void insert(String delta) {
-        delta = Jalali.persianDigitsIfPersian(delta);
+        delta = Jalali.persianDigitsIfPersian(delta, true);
         mDisplay.insert(delta);
     }
 
     private void setText(CharSequence text) {
-        text = Jalali.persianDigitsIfPersian(text.toString());
+        text = Jalali.persianDigitsIfPersian(text.toString(), true);
         mDisplay.setText(text, CalculatorDisplay.Scroll.UP);
     }
 
